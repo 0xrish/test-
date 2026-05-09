@@ -73,14 +73,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Indigrand Technologies — Performance Systems for D2C & B2B" },
+      {
+        name: "description",
+        content:
+          "Indigrand Technologies is a Nagpur-based consulting company building performance websites, GA4 infrastructure, AI-powered ad systems, Micro-SaaS and lead generation systems for D2C and B2B brands worldwide.",
+      },
+      { name: "author", content: "Indigrand Technologies" },
+      { property: "og:title", content: "Indigrand Technologies" },
+      {
+        property: "og:description",
+        content: "We build websites and systems that deliver results — not just designs.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
@@ -114,7 +120,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Layout />
     </QueryClientProvider>
   );
 }
