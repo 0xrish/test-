@@ -80,13 +80,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Indigrand Technologies is a Nagpur-based consulting company building performance websites, GA4 infrastructure, AI-powered ad systems, Micro-SaaS and lead generation systems for D2C and B2B brands worldwide.",
       },
       { name: "author", content: "Indigrand Technologies" },
-      { property: "og:title", content: "Indigrand Technologies" },
+      { property: "og:title", content: "Indigrand Technologies — Performance Systems for D2C & B2B" },
       {
         property: "og:description",
         content: "We build websites and systems that deliver results — not just designs.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Indigrand Technologies — Performance Systems for D2C & B2B" },
+      { name: "description", content: "Indigrand Ignition builds conversion-focused websites and AI-driven systems for D2C and B2B brands." },
+      { property: "og:description", content: "Indigrand Ignition builds conversion-focused websites and AI-driven systems for D2C and B2B brands." },
+      { name: "twitter:description", content: "Indigrand Ignition builds conversion-focused websites and AI-driven systems for D2C and B2B brands." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/36d1f333-28db-4853-a2b6-5e930b232778/id-preview-74fed6cb--9633cf34-410b-45d5-abbb-0d5d4bdeaebd.lovable.app-1778323416587.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/36d1f333-28db-4853-a2b6-5e930b232778/id-preview-74fed6cb--9633cf34-410b-45d5-abbb-0d5d4bdeaebd.lovable.app-1778323416587.png" },
     ],
     links: [
       {
