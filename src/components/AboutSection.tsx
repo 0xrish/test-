@@ -1,189 +1,228 @@
-import { motion } from "framer-motion";
-import { SectionHeader } from "./SectionHeader";
+import { motion, type Variants } from "framer-motion";
 import { TagPill } from "./TagPill";
-import { ArrowUpRight, Activity, Database, Sparkles } from "lucide-react";
 
-function StackedDashboard() {
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+const TAGS = [
+  "Systems Thinking",
+  "Scalable Infrastructure",
+  "AI-First",
+  "India to World",
+];
+
+function NetworkVisual() {
   return (
-    <div className="relative mx-auto h-[460px] w-full max-w-md">
-      {/* Background card */}
-      <motion.div
-        initial={{ opacity: 0, y: 30, rotate: -2 }}
-        whileInView={{ opacity: 1, y: 0, rotate: -3 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
-        className="absolute right-2 top-6 h-72 w-[88%] rounded-2xl border border-accent-blue/20 bg-card/60 p-5 backdrop-blur-xl shadow-[0_0_60px_-20px_rgba(37,99,235,0.5)]"
-      >
-        <div className="flex items-center justify-between">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
-            Funnel · Last 90d
-          </p>
-          <span className="rounded-full border border-border bg-background/60 px-2 py-0.5 text-[10px] text-accent-blue-light">
-            GA4
-          </span>
-        </div>
-        <div className="mt-5 space-y-2.5">
-          {[
-            { label: "Sessions", w: "100%", v: "412K" },
-            { label: "Add to Cart", w: "62%", v: "255K" },
-            { label: "Checkout", w: "31%", v: "127K" },
-            { label: "Purchase", w: "14%", v: "57.6K" },
-          ].map((row) => (
-            <div key={row.label}>
-              <div className="flex items-center justify-between text-[11px] text-text-muted">
-                <span>{row.label}</span>
-                <span className="text-text-primary">{row.v}</span>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto aspect-square w-full max-w-md"
+    >
+      {/* Ambient glow */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(37,99,235,0.25), transparent 65%)",
+          filter: "blur(40px)",
+        }}
+      />
+
+      {/* Stacked glass cards */}
+      {[
+        { rotate: -8, x: -28, y: 30, delay: 0, opacity: 0.55 },
+        { rotate: -3, x: -10, y: 12, delay: 0.1, opacity: 0.75 },
+        { rotate: 4, x: 14, y: -6, delay: 0.2, opacity: 1 },
+      ].map((card, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: card.opacity, y: card.y }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, delay: card.delay, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-x-6 inset-y-10 rounded-2xl border border-accent-blue/30 bg-card/70 backdrop-blur-xl"
+          style={{
+            transform: `translate(${card.x}px, 0) rotate(${card.rotate}deg)`,
+            boxShadow:
+              "0 30px 80px -20px rgba(37,99,235,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
+          }}
+        >
+          {i === 2 && (
+            <div className="flex h-full flex-col p-6">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
+                  Indigrand Network
+                </span>
+                <span className="inline-flex h-2 w-2 rounded-full bg-accent-blue shadow-[0_0_10px_var(--accent-blue)]" />
               </div>
-              <div className="mt-1 h-2 overflow-hidden rounded-full bg-background/60">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: row.w }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-                  className="h-full rounded-full bg-gradient-to-r from-accent-blue to-accent-blue-light"
-                  style={{ boxShadow: "0 0 12px rgba(96,165,250,0.6)" }}
-                />
-              </div>
+
+              {/* SVG nodes */}
+              <svg viewBox="0 0 200 160" className="mt-4 h-full w-full">
+                <defs>
+                  <linearGradient id="netLine" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#2563EB" stopOpacity="0.2" />
+                  </linearGradient>
+                </defs>
+                {[
+                  ["100,20", "30,70"],
+                  ["100,20", "170,70"],
+                  ["100,20", "100,90"],
+                  ["30,70", "70,140"],
+                  ["170,70", "130,140"],
+                  ["100,90", "70,140"],
+                  ["100,90", "130,140"],
+                ].map(([a, b], idx) => {
+                  const [ax, ay] = a.split(",").map(Number);
+                  const [bx, by] = b.split(",").map(Number);
+                  return (
+                    <motion.line
+                      key={idx}
+                      x1={ax}
+                      y1={ay}
+                      x2={bx}
+                      y2={by}
+                      stroke="url(#netLine)"
+                      strokeWidth="1"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.2, delay: 0.4 + idx * 0.08 }}
+                    />
+                  );
+                })}
+                {[
+                  [100, 20],
+                  [30, 70],
+                  [170, 70],
+                  [100, 90],
+                  [70, 140],
+                  [130, 140],
+                ].map(([cx, cy], idx) => (
+                  <motion.circle
+                    key={idx}
+                    cx={cx}
+                    cy={cy}
+                    r={idx === 0 ? 5 : 3.5}
+                    fill={idx === 0 ? "#60A5FA" : "#2563EB"}
+                    style={{
+                      filter:
+                        idx === 0
+                          ? "drop-shadow(0 0 8px #60A5FA)"
+                          : "drop-shadow(0 0 4px #2563EB)",
+                    }}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + idx * 0.08, duration: 0.4 }}
+                  />
+                ))}
+              </svg>
             </div>
-          ))}
-        </div>
-      </motion.div>
+          )}
+        </motion.div>
+      ))}
 
-      {/* Mid card */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] as const }}
-        className="absolute left-0 top-24 w-[78%] rounded-2xl border border-border bg-card/85 p-5 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]"
-      >
-        <div className="flex items-center gap-2">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-accent-blue/15 text-accent-blue-light">
-            <Activity className="h-3.5 w-3.5" />
-          </span>
-          <p className="text-xs font-medium text-text-primary">Realtime ROAS</p>
-        </div>
-        <p className="mt-3 font-display text-3xl font-extrabold text-text-primary">
-          6.4<span className="text-accent-blue-light">x</span>
-        </p>
-        <p className="mt-1 text-[10px] text-emerald-400">▲ 1.2x vs last 7 days</p>
-        <div className="mt-4 grid grid-cols-7 items-end gap-1.5">
-          {[40, 55, 38, 62, 70, 58, 88].map((h, i) => (
-            <motion.div
-              key={i}
-              initial={{ height: 0 }}
-              whileInView={{ height: `${h}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 + i * 0.05 }}
-              className="w-full rounded-sm bg-gradient-to-t from-accent-blue/30 to-accent-blue-light"
-              style={{ minHeight: 8 }}
-            />
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Floating badge */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute bottom-4 right-4 rounded-xl border border-accent-orange/30 bg-card/90 p-3 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(249,115,22,0.5)]"
-      >
-        <div className="flex items-center gap-2">
-          <Sparkles className="h-3.5 w-3.5 text-accent-orange" />
-          <p className="text-[10px] uppercase tracking-wider text-text-muted">
-            AI Optimization
-          </p>
-        </div>
-        <p className="mt-1.5 font-display text-base font-bold text-text-primary">
-          CAC <span className="text-accent-orange">−38%</span>
-        </p>
-      </motion.div>
-
-      {/* Floating numbers */}
-      <motion.div
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -right-2 top-0 rounded-lg border border-border bg-card/80 px-3 py-2 backdrop-blur-md"
-      >
-        <div className="flex items-center gap-1.5 text-[11px]">
-          <Database className="h-3 w-3 text-accent-blue-light" />
-          <span className="text-text-muted">1.2M events / day</span>
-        </div>
-      </motion.div>
-    </div>
+      {/* Floating dots */}
+      {[
+        { x: "8%", y: "12%", size: 6, color: "#60A5FA", delay: 0 },
+        { x: "92%", y: "20%", size: 4, color: "#F97316", delay: 1 },
+        { x: "85%", y: "82%", size: 5, color: "#60A5FA", delay: 2 },
+        { x: "12%", y: "88%", size: 3, color: "#2563EB", delay: 1.5 },
+      ].map((d, i) => (
+        <motion.span
+          key={i}
+          aria-hidden
+          animate={{ y: [0, -10, 0], opacity: [0.6, 1, 0.6] }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: d.delay,
+          }}
+          className="absolute rounded-full"
+          style={{
+            left: d.x,
+            top: d.y,
+            width: d.size,
+            height: d.size,
+            background: d.color,
+            boxShadow: `0 0 12px ${d.color}`,
+          }}
+        />
+      ))}
+    </motion.div>
   );
 }
 
 export function AboutSection() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 py-28 sm:py-36">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
+    <section className="relative overflow-hidden py-24 sm:py-32">
+      <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+          }}
+        >
+          <motion.span
+            variants={fadeUp}
+            className="inline-flex items-center gap-2 rounded-full border border-border glass px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-text-muted"
           >
-            <SectionHeader
-              overline="We Are Not An Agency"
-              title={
-                <>
-                  A Technology Company
-                  <br />
-                  That Happens to{" "}
-                  <span className="text-gradient-blue">Do Marketing.</span>
-                </>
-              }
-            />
+            <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
+            Our Story
+          </motion.span>
 
-            <div className="mt-8 space-y-5 text-[16px] leading-relaxed text-text-muted sm:text-[17px]">
-              <p>
-                Most agencies run your ads and send you a report. We build the systems
-                underneath — the tracking infrastructure, the automation layers, the
-                data pipelines — so your marketing actually compounds over time.
-              </p>
-              <p>
-                We work with D2C and B2B brands globally, starting with data from what's
-                already happened, finding what works, and scaling it with technology.
-                From GA4 to WhatsApp flows to Micro-SaaS tools — we are end-to-end.
-              </p>
-            </div>
+          <motion.h2
+            variants={fadeUp}
+            className="font-display mt-6 text-4xl leading-[1.05] sm:text-5xl md:text-[3.5rem]"
+          >
+            A New Kind of{" "}
+            <span className="text-gradient-blue">Technology Ecosystem</span>
+          </motion.h2>
 
-            <div className="mt-8 flex flex-wrap gap-2">
-              {[
-                "Systems Thinking",
-                "Data-First",
-                "AI-Powered",
-                "Consulting, Not Agency",
-              ].map((t) => (
-                <TagPill key={t}>{t}</TagPill>
-              ))}
-            </div>
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-[16px] leading-relaxed text-text-muted sm:text-[17px]"
+          >
+            Indigrand Technologies was born from a singular belief — that the
+            future belongs to companies that can think in systems, execute at
+            scale, and grow without limits. We are not a service provider. We
+            are a technology ecosystem. Across AI, infrastructure, healthcare,
+            marketing, and solar energy, we build the platforms and systems
+            that define the next generation of Indian and global enterprise.
+          </motion.p>
 
-            <a
-              href="/services"
-              className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-accent-blue-light hover:text-text-primary"
-            >
-              How we work <ArrowUpRight className="h-4 w-4" />
-            </a>
+          <motion.p
+            variants={fadeUp}
+            className="mt-5 text-[16px] leading-relaxed text-text-muted sm:text-[17px]"
+          >
+            From automating operations to building SaaS platforms, from solar
+            grids to healthcare CRM — Indigrand is where technology meets
+            transformation.
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
+            {TAGS.map((t) => (
+              <TagPill key={t}>{t}</TagPill>
+            ))}
           </motion.div>
+        </motion.div>
 
-          <div className="relative">
-            {/* Glow behind dashboard */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 -z-10"
-              style={{
-                background:
-                  "radial-gradient(circle at 60% 50%, rgba(37,99,235,0.18), transparent 65%)",
-                filter: "blur(40px)",
-              }}
-            />
-            <StackedDashboard />
-          </div>
+        <div className="flex justify-center lg:justify-end">
+          <NetworkVisual />
         </div>
       </div>
     </section>
