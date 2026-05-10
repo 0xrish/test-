@@ -5,10 +5,11 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { to: "/services", label: "Services" },
-  { to: "/work", label: "Our Work" },
-  { to: "/projects", label: "Projects" },
-  { to: "/blog", label: "Blog" },
+  { to: "/services", label: "Solutions" },
+  { to: "/work", label: "Verticals" },
+  { to: "/projects", label: "Industries" },
+  { to: "/blog", label: "Impact" },
+  { to: "/contact", label: "Careers" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -21,6 +22,22 @@ function Logo({ onClick }: { onClick?: () => void }) {
     >
       INDIGRAND
       <span className="ml-1 inline-block h-1.5 w-1.5 translate-y-[-2px] rounded-full bg-accent-blue shadow-[0_0_12px_var(--accent-blue)]" />
+    </Link>
+  );
+}
+
+function GetInTouch({ onClick, className }: { onClick?: () => void; className?: string }) {
+  return (
+    <Link
+      to="/contact"
+      onClick={onClick}
+      className={cn(
+        "group inline-flex items-center justify-center rounded-full border border-accent-blue/70 bg-transparent px-5 py-2.5 text-sm font-medium text-accent-blue-light transition-all duration-300",
+        "hover:bg-accent-blue hover:text-white hover:shadow-[0_10px_30px_-10px_var(--accent-blue)] hover:-translate-y-0.5",
+        className,
+      )}
+    >
+      Get in Touch
     </Link>
   );
 }
@@ -81,21 +98,16 @@ export function Navbar() {
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Logo />
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-1 lg:flex">
             {NAV.map((item) => (
-              <li key={item.to}>
+              <li key={item.label}>
                 <NavLink to={item.to} label={item.label} />
               </li>
             ))}
           </ul>
 
-          <div className="hidden md:block">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-accent-blue px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[oklch(0.48_0.22_264)] hover:shadow-[0_10px_30px_-10px_var(--accent-blue)]"
-            >
-              Work With Us
-            </Link>
+          <div className="hidden lg:block">
+            <GetInTouch />
           </div>
 
           <button
@@ -103,7 +115,7 @@ export function Navbar() {
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text-primary md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text-primary lg:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -116,65 +128,64 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] bg-background md:hidden"
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] bg-background/60 backdrop-blur-sm lg:hidden"
+            onClick={() => setOpen(false)}
           >
-            <div className="flex h-16 items-center justify-between px-6">
-              <Logo onClick={() => setOpen(false)} />
-              <button
-                type="button"
-                aria-label="Close menu"
-                onClick={() => setOpen(false)}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text-primary"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <motion.ul
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: {},
-                show: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
-              }}
-              className="flex h-[calc(100vh-4rem)] flex-col items-center justify-center gap-8 px-6"
+            <motion.aside
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="absolute right-0 top-0 flex h-full w-[86%] max-w-sm flex-col border-l border-border bg-background"
             >
-              {NAV.map((item) => (
-                <motion.li
-                  key={item.to}
-                  variants={{
-                    hidden: { opacity: 0, y: 16 },
-                    show: { opacity: 1, y: 0 },
-                  }}
-                >
-                  <Link
-                    to={item.to}
-                    onClick={() => setOpen(false)}
-                    activeProps={{ className: "text-accent-blue-light" }}
-                    inactiveProps={{ className: "text-text-primary" }}
-                    className="font-display text-4xl font-extrabold"
-                  >
-                    {item.label}
-                  </Link>
-                </motion.li>
-              ))}
-              <motion.li
-                variants={{
-                  hidden: { opacity: 0, y: 16 },
-                  show: { opacity: 1, y: 0 },
-                }}
-                className="mt-4"
-              >
-                <Link
-                  to="/contact"
+              <div className="flex h-16 items-center justify-between px-6">
+                <Logo onClick={() => setOpen(false)} />
+                <button
+                  type="button"
+                  aria-label="Close menu"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full bg-accent-blue px-8 py-3 text-base font-medium text-white"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text-primary"
                 >
-                  Work With Us
-                </Link>
-              </motion.li>
-            </motion.ul>
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <motion.ul
+                initial="hidden"
+                animate="show"
+                variants={{
+                  hidden: {},
+                  show: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
+                }}
+                className="flex flex-1 flex-col gap-1 px-6 pt-6"
+              >
+                {NAV.map((item) => (
+                  <motion.li
+                    key={item.label}
+                    variants={{
+                      hidden: { opacity: 0, x: 20 },
+                      show: { opacity: 1, x: 0 },
+                    }}
+                  >
+                    <Link
+                      to={item.to}
+                      onClick={() => setOpen(false)}
+                      activeProps={{ className: "text-accent-blue-light" }}
+                      inactiveProps={{ className: "text-text-primary" }}
+                      className="font-display block border-b border-border/50 py-4 text-2xl font-bold"
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </motion.ul>
+
+              <div className="border-t border-border p-6">
+                <GetInTouch onClick={() => setOpen(false)} className="w-full" />
+              </div>
+            </motion.aside>
           </motion.div>
         )}
       </AnimatePresence>
