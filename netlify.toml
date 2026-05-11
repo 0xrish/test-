@@ -2,7 +2,7 @@
   command = "npm run build"
   publish = "dist/client"
 
-# SPA routing - redirect all non-file requests to index.html
+# SPA routing: redirect all missing files to index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"
