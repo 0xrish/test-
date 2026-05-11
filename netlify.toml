@@ -2,8 +2,11 @@
   command = "npm run build"
   publish = "dist/client"
 
-[[plugins]]
-  package = "@netlify/vite-plugin-tanstack-start"
+# SPA routing - redirect all non-file requests to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 # Cache static assets for 1 year (they have hashes in names)
 [[headers]]
