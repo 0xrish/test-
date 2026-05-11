@@ -6,7 +6,8 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — Indigrand Technologies" },
       {
         name: "description",
-        content: "Talk to Indigrand about performance systems, GA4, paid media, GTM, and AI workflows.",
+        content:
+          "Talk to Indigrand about performance systems, GA4, paid media, GTM, and AI workflows.",
       },
       { property: "og:title", content: "Contact — Indigrand Technologies" },
       { property: "og:description", content: "Let's build systems that deliver results." },

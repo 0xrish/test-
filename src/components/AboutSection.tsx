@@ -10,12 +10,7 @@ const fadeUp: Variants = {
   },
 };
 
-const TAGS = [
-  "Systems Thinking",
-  "Scalable Infrastructure",
-  "AI-First",
-  "India to World",
-];
+const TAGS = ["Systems Thinking", "Scalable Infrastructure", "AI-First", "India to World"];
 
 function NetworkVisual() {
   return (
@@ -31,8 +26,7 @@ function NetworkVisual() {
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
-          background:
-            "radial-gradient(circle at 50% 50%, rgba(37,99,235,0.25), transparent 65%)",
+          background: "radial-gradient(circle at 50% 50%, rgba(37,99,235,0.25), transparent 65%)",
           filter: "blur(40px)",
         }}
       />
@@ -116,9 +110,7 @@ function NetworkVisual() {
                     fill={idx === 0 ? "#60A5FA" : "#2563EB"}
                     style={{
                       filter:
-                        idx === 0
-                          ? "drop-shadow(0 0 8px #60A5FA)"
-                          : "drop-shadow(0 0 4px #2563EB)",
+                        idx === 0 ? "drop-shadow(0 0 8px #60A5FA)" : "drop-shadow(0 0 4px #2563EB)",
                     }}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -189,29 +181,26 @@ export function AboutSection() {
             variants={fadeUp}
             className="font-display mt-6 text-4xl leading-[1.05] sm:text-5xl md:text-[3.5rem]"
           >
-            A New Kind of{" "}
-            <span className="text-gradient-blue">Technology Ecosystem</span>
+            A New Kind of <span className="text-gradient-blue">Technology Ecosystem</span>
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="mt-6 text-[16px] leading-relaxed text-text-muted sm:text-[17px]"
           >
-            Indigrand Technologies was born from a singular belief — that the
-            future belongs to companies that can think in systems, execute at
-            scale, and grow without limits. We are not a service provider. We
-            are a technology ecosystem. Across AI, infrastructure, healthcare,
-            marketing, and solar energy, we build the platforms and systems
-            that define the next generation of Indian and global enterprise.
+            Indigrand Technologies was born from a singular belief — that the future belongs to
+            companies that can think in systems, execute at scale, and grow without limits. We are
+            not a service provider. We are a technology ecosystem. Across AI, infrastructure,
+            healthcare, marketing, and solar energy, we build the platforms and systems that define
+            the next generation of Indian and global enterprise.
           </motion.p>
 
           <motion.p
             variants={fadeUp}
             className="mt-5 text-[16px] leading-relaxed text-text-muted sm:text-[17px]"
           >
-            From automating operations to building SaaS platforms, from solar
-            grids to healthcare CRM — Indigrand is where technology meets
-            transformation.
+            From automating operations to building SaaS platforms, from solar grids to healthcare
+            CRM — Indigrand is where technology meets transformation.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">

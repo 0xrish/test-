@@ -35,10 +35,8 @@ export function Hero() {
           backgroundImage:
             "linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
         }}
       />
 
@@ -49,8 +47,7 @@ export function Hero() {
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute -top-40 -left-32 -z-10 h-[560px] w-[560px] rounded-full"
         style={{
-          background:
-            "radial-gradient(circle, rgba(37,99,235,0.22), transparent 60%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.22), transparent 60%)",
           filter: "blur(70px)",
         }}
       />
@@ -60,8 +57,7 @@ export function Hero() {
         transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute -bottom-44 -right-40 -z-10 h-[640px] w-[640px] rounded-full"
         style={{
-          background:
-            "radial-gradient(circle, rgba(249,115,22,0.16), transparent 60%)",
+          background: "radial-gradient(circle, rgba(249,115,22,0.16), transparent 60%)",
           filter: "blur(80px)",
         }}
       />
@@ -71,8 +67,7 @@ export function Hero() {
         transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 rounded-full"
         style={{
-          background:
-            "radial-gradient(circle, rgba(96,165,250,0.10), transparent 60%)",
+          background: "radial-gradient(circle, rgba(96,165,250,0.10), transparent 60%)",
           filter: "blur(80px)",
         }}
       />
@@ -122,9 +117,8 @@ export function Hero() {
             variants={fadeUp}
             className="mt-7 max-w-2xl text-[17px] leading-relaxed text-text-muted sm:text-[18px]"
           >
-            Indigrand Technologies powers the next generation of enterprises,
-            healthcare systems, cities, and digital ecosystems — built for
-            scale, designed for impact.
+            Indigrand Technologies powers the next generation of enterprises, healthcare systems,
+            cities, and digital ecosystems — built for scale, designed for impact.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-10 flex flex-wrap justify-center gap-3">

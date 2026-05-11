@@ -18,13 +18,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   const center = align === "center";
   return (
-    <div
-      className={cn(
-        "max-w-3xl",
-        center && "mx-auto text-center",
-        className,
-      )}
-    >
+    <div className={cn("max-w-3xl", center && "mx-auto text-center", className)}>
       {overline && (
         <span
           className={cn(

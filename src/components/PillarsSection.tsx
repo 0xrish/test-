@@ -7,20 +7,17 @@ const PILLARS = [
   {
     icon: Target,
     title: "Websites Built to Convert",
-    body:
-      "Not just beautiful — built with GA4 tracking, heatmaps, CRO principles, and performance benchmarks from day one.",
+    body: "Not just beautiful — built with GA4 tracking, heatmaps, CRO principles, and performance benchmarks from day one.",
   },
   {
     icon: BarChart3,
     title: "Data From Your Past, Applied to Your Future",
-    body:
-      "We audit your historical campaign data, find what was working (and what was wasting budget), and build a strategy on real signals — not assumptions.",
+    body: "We audit your historical campaign data, find what was working (and what was wasting budget), and build a strategy on real signals — not assumptions.",
   },
   {
     icon: Settings2,
     title: "Technology as the Delivery Mechanism",
-    body:
-      "CRMs, WhatsApp automation, Micro-SaaS tools, AI ad systems — we build the infrastructure that makes your marketing team 10× more effective.",
+    body: "CRMs, WhatsApp automation, Micro-SaaS tools, AI ad systems — we build the infrastructure that makes your marketing team 10× more effective.",
   },
 ];
 
@@ -31,8 +28,7 @@ export function PillarsSection() {
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
-          background:
-            "radial-gradient(ellipse at top, rgba(37,99,235,0.08), transparent 60%)",
+          background: "radial-gradient(ellipse at top, rgba(37,99,235,0.08), transparent 60%)",
         }}
       />
 
@@ -48,8 +44,8 @@ export function PillarsSection() {
             overline="Why Indigrand"
             title={
               <>
-                Why Brands That Care About{" "}
-                <span className="text-gradient-blue">Results</span> Choose Us
+                Why Brands That Care About <span className="text-gradient-blue">Results</span>{" "}
+                Choose Us
               </>
             }
           />
@@ -87,9 +83,7 @@ export function PillarsSection() {
                     <h3 className="font-display mt-6 text-2xl font-extrabold leading-tight text-text-primary">
                       {p.title}
                     </h3>
-                    <p className="mt-4 text-[15px] leading-relaxed text-text-muted">
-                      {p.body}
-                    </p>
+                    <p className="mt-4 text-[15px] leading-relaxed text-text-muted">{p.body}</p>
                   </div>
                 </GlowCard>
               </motion.div>

@@ -11,17 +11,13 @@ const METRICS = [
 
 export function ResultsBar() {
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ backgroundColor: "#0A0A12" }}
-    >
+    <section className="relative overflow-hidden" style={{ backgroundColor: "#0A0A12" }}>
       {/* Top + bottom glow lines */}
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(37,99,235,0.7), transparent)",
+          background: "linear-gradient(90deg, transparent, rgba(37,99,235,0.7), transparent)",
           boxShadow: "0 0 24px rgba(37,99,235,0.4)",
         }}
       />
@@ -29,8 +25,7 @@ export function ResultsBar() {
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(37,99,235,0.7), transparent)",
+          background: "linear-gradient(90deg, transparent, rgba(37,99,235,0.7), transparent)",
           boxShadow: "0 0 24px rgba(37,99,235,0.4)",
         }}
       />
@@ -42,13 +37,10 @@ export function ResultsBar() {
         transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
         style={{
-          backgroundImage:
-            "radial-gradient(rgba(96,165,250,0.18) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(rgba(96,165,250,0.18) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 30%, transparent 80%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
         }}
       />
 
@@ -60,8 +52,7 @@ export function ResultsBar() {
           transition={{ duration: 0.6 }}
           className="font-display mx-auto max-w-3xl text-center text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl"
         >
-          Built for Scale.{" "}
-          <span className="text-gradient-blue">Trusted for Results.</span>
+          Built for Scale. <span className="text-gradient-blue">Trusted for Results.</span>
         </motion.h2>
 
         <motion.div
