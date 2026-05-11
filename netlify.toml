@@ -2,10 +2,8 @@
   command = "npm run build"
   publish = "dist/client"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[plugins]]
+  package = "@netlify/vite-plugin-tanstack-start"
 
 # Cache static assets for 1 year (they have hashes in names)
 [[headers]]
